@@ -1,0 +1,43 @@
+# =========================
+# Eclipse
+# =========================
+.settings/
+.project
+.classpath
+
+# =========================
+# Build / compilação
+# =========================
+bin/
+build/
+target/
+
+# =========================
+# Arquivos temporários
+# =========================
+*.log
+*.tmp
+*.bak
+*.swp
+
+# =========================
+# Sistema operacional
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# IDEs (caso use outras)
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# Dependências (se usar futuramente)
+# =========================
+node_modules/
+
+# =========================
+# Arquivos sensíveis (opcional)
+# =========================
+.env
