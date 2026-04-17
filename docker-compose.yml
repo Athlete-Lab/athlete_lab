@@ -1,0 +1,26 @@
+services:
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-projeto
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: athlete_lab
+      MYSQL_USER: user
+      MYSQL_PASSWORD: 1234
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./initdb:/docker-entrypoint-initdb.d
+
+  app:
+    build: .
+    container_name: app-java
+    depends_on:
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_NAME: athlete_lab
+      DB_USER: user
+      DB_PASSWORD: 1234
