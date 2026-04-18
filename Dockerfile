@@ -1,5 +1,5 @@
 # Estágio 1: Compilação (Build)
-FROM maven:3.9.6-eclipse-temurin-17 AS build
+FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /app
 
 # Copia o arquivo de configuração do Maven
@@ -13,7 +13,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Estágio 2: Execução (Runtime)
-FROM eclipse-temurin:17-jre
+FROM eclipse-temurin:21-jre
 WORKDIR /app
 
 # Copia apenas o .jar gerado no estágio anterior
