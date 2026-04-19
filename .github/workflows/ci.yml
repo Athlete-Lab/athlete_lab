@@ -2,9 +2,11 @@ name: Java CI/CD Pipeline
 
 on:
   push:
-    branches: [ "main", "dev-prototype" ]
+    branches:
+      - '**'          # roda em qualquer branch
   pull_request:
-    branches: [ "main", "dev-prototype" ]
+    branches:
+      - '**'          # roda em qualquer PR
 
 jobs:
   build-and-test:
