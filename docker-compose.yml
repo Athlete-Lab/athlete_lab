@@ -1,26 +1,41 @@
+
 services:
 
-  mysql:
-    image: mysql:8.0
-    container_name: mysql-projeto
-    restart: always
+  db:
+    image: mysql:8
+
+    container_name: athletelab_bd
+
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: athlete_lab
-      MYSQL_USER: user
-      MYSQL_PASSWORD: 1234
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: athletelab
+
     ports:
       - "3307:3306"
+
     volumes:
+      - mysql_data:/var/lib/mysql
       - ./initdb:/docker-entrypoint-initdb.d
+
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
 
   app:
     build: .
-    container_name: app-java
+
+    container_name: athlete-app
+
     depends_on:
-      - mysql
+      db:
+        condition: service_healthy
+
     environment:
-      DB_HOST: mysql
-      DB_NAME: athlete_lab
-      DB_USER: user
-      DB_PASSWORD: 1234
+      DB_HOST: db
+
+volumes:
+  mysql_data:
+
