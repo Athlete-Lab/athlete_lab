@@ -1,5 +1,7 @@
 package com.athletelab.usuario;
 
+import com.athletelab.configBD.ConnectionDataBase;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +13,7 @@ public class UsuarioDao {
 
         String sql = "INSERT INTO usuario (nome, email, telefone, cidadeUF, senha, ativo) VALUES (?, ?, ?, ?, ?, ?)";
 
-        try (Connection conn = Conexao.conectar();
+        try (Connection conn = ConnectionDataBase.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, u.getNome());
@@ -36,7 +38,7 @@ public class UsuarioDao {
         List<UsuarioModel> lista = new ArrayList<>();
         String sql = "SELECT * FROM usuario";
 
-        try (Connection conn = Conexao.conectar();
+        try (Connection conn = ConnectionDataBase.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
 
@@ -66,7 +68,7 @@ public class UsuarioDao {
 
         String sql = "UPDATE usuario SET nome=?, email=?, telefone=?, cidadeUF=?, senha=? WHERE idUsuario=?";
 
-        try (Connection conn = Conexao.conectar();
+        try (Connection conn = ConnectionDataBase.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, u.getNome());
@@ -90,7 +92,7 @@ public class UsuarioDao {
 
         String sql = "DELETE FROM usuario WHERE idUsuario=?";
 
-        try (Connection conn = Conexao.conectar();
+        try (Connection conn = ConnectionDataBase.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, idUsuario);

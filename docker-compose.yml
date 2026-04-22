@@ -28,6 +28,9 @@ services:
     build: .
 
     container_name: athlete-app
+    #Essas duas linhas permitem escrever no terminal Docker
+    stdin_open: true
+    tty: true
 
     depends_on:
       db:
