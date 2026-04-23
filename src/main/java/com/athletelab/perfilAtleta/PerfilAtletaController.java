@@ -1,4 +1,4 @@
-package com.athletelab.perfil_atleta;
+package com.athletelab.perfilAtleta;
 
 public class PerfilAtletaController {
 }

@@ -1,6 +1,7 @@
 package com.athletelab.usuario;
 
 import com.athletelab.configBD.ConnectionDataBase;
+
 import com.athletelab.usuario.UsuarioModel;
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package com.athletelab.atleta;
 
-import com.athletelab.perfil_atleta.PerfilAtletaModel;
+import com.athletelab.perfilAtleta.PerfilAtletaModel;
 import com.athletelab.usuario.UsuarioModel;
 import java.util.List;
 import java.util.ArrayList;

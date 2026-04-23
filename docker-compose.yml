@@ -27,7 +27,14 @@ services:
   app:
     build: .
 
+
     container_name: athletelab-app
+
+    container_name: athlete-app
+    #Essas duas linhas permitem escrever no terminal Docker
+    stdin_open: true
+    tty: true
+
 
     stdin_open: true
     tty: true

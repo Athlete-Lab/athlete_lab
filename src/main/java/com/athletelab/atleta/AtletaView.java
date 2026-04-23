@@ -1,6 +1,5 @@
 package com.athletelab.atleta;
 
-import com.athletelab.perfil_atleta.PerfilAtletaController;
 import java.util.Scanner;
 
 public class AtletaView {

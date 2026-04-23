@@ -2,6 +2,7 @@ package com.athletelab.usuario;
 
 import java.time.LocalDate;
 import java.util.Scanner;
+import com.athletelab.treinador.TreinadorView;
 import com.athletelab.usuario.UsuarioController;
 
 public class UsuarioView {
@@ -65,7 +66,8 @@ public class UsuarioView {
         }
         else if (usuario.getTipoUsuario().equals("TREINADOR")){
             System.out.println("Login como Treinador.");
-            menuTreinador();
+            TreinadorView treinado = new TreinadorView();
+            treinado.exibirMenu();
         }
         else if (usuario.getTipoUsuario().equals("ATLETA")){
             System.out.println("Login como Atleta.");
