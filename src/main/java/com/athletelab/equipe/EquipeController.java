@@ -2,8 +2,6 @@ package com.athletelab.equipe;
 
 import java.util.List;
 
-import com.athletelab.treinador.*;
-
 public class EquipeController {
 
     private EquipeDao equipeDao = new EquipeDao();

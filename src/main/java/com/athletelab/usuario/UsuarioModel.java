@@ -1,20 +1,34 @@
 package com.athletelab.usuario;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class UsuarioModel {
 
     private int idUsuario;
     private String nome;
     private String email;
-    private String telefone;
-    private Date dataNascimento;
-    private String cidadeUF;
     private String senha;
-    private Date dataCriacao;
+    private String telefone;
+    private LocalDate dataNascimento;
+    private String cidadeUF;
+    private LocalDate dataCriacao;
     private boolean ativo;
+    private String tipoUsuario;
 
-    public UsuarioModel() {
+    public UsuarioModel(String nome, String email, String senha, String telefone, LocalDate dataNascimento, String cidadeUF, String tipoUsuario) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.telefone = telefone;
+        this.dataNascimento = dataNascimento;
+        this.cidadeUF = cidadeUF;
+        this.tipoUsuario = tipoUsuario;
+        this.dataCriacao = LocalDate.now();
+        this.ativo = true;
+    }
+
+    public  UsuarioModel(){
+
     }
 
     public int getIdUsuario() {
@@ -49,11 +63,11 @@ public class UsuarioModel {
         this.telefone = telefone;
     }
 
-    public Date getDataNascimento() {
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
@@ -73,11 +87,11 @@ public class UsuarioModel {
         this.senha = senha;
     }
 
-    public Date getDataCriacao() {
+    public LocalDate getDataCriacao() {
         return dataCriacao;
     }
 
-    public void setDataCriacao(Date dataCriacao) {
+    public void setDataCriacao(LocalDate dataCriacao) {
         this.dataCriacao = dataCriacao;
     }
 
@@ -87,5 +101,12 @@ public class UsuarioModel {
 
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
+    }
+
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
     }
 }

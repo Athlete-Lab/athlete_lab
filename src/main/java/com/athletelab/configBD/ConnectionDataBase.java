@@ -30,4 +30,16 @@ public class ConnectionDataBase {
         }
         return connection;
     }
+
+    public static void TesteConexao(){
+        try {
+            Connection conn = ConnectionDataBase.getConnection();
+            if (conn != null && !conn.isClosed()) {
+                System.out.println("🔥 BANCO CONECTADO COM SUCESSO!");
+            }
+        } catch (Exception e) {
+            System.out.println("❌ ERRO AO CONECTAR:");
+            e.printStackTrace();
+        }
+    }
 }

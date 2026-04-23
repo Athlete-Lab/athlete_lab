@@ -15,7 +15,7 @@ services:
 
     volumes:
       - mysql_data:/var/lib/mysql
-      - ./initdb:/docker-entrypoint-initdb.d
+      - ./initdb:/docker-entrypoint-initdb.d/
 
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
@@ -27,11 +27,13 @@ services:
   app:
     build: .
 
-    container_name: athlete-app
+    container_name: athletelab-app
+
     #Essas duas linhas permitem escrever no terminal Docker
     stdin_open: true
     tty: true
 
+    restart: on-failure
     depends_on:
       db:
         condition: service_healthy
