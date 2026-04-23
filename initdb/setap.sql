@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 -- BANCO DE DADOS: ATHLETE LAB
 -- Gerado a partir do diagrama UML enviado
