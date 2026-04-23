@@ -27,8 +27,12 @@ services:
   app:
     build: .
 
-    container_name: athlete-app
+    container_name: athletelab-app
 
+    stdin_open: true
+    tty: true
+
+    restart: on-failure
     depends_on:
       db:
         condition: service_healthy

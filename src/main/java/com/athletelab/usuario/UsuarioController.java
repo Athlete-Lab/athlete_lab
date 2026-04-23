@@ -1,7 +1,7 @@
 package com.athletelab.usuario;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public class UsuarioController {
@@ -13,11 +13,6 @@ public class UsuarioController {
 
         if (u == null) {
             System.out.println("Erro: usuário inválido.");
-            return;
-        }
-
-        if (u.getIdUsuario() <= 0) {
-            System.out.println("Erro: ID inválido.");
             return;
         }
 
@@ -52,6 +47,10 @@ public class UsuarioController {
             return;
         }
 
+        if(u.getTipoUsuario() == null || u.getTipoUsuario().isEmpty()){
+            System.out.println("Erro: tipo de usuário é obrigatório.");
+        }
+
         if (u.getCidadeUF() == null || u.getCidadeUF().isEmpty()) {
             System.out.println("Erro: cidade/UF é obrigatória.");
             return;
@@ -64,13 +63,13 @@ public class UsuarioController {
 
         // Define automaticamente
         if (u.getDataCriacao() == null) {
-            u.setDataCriacao(new Date());
+            u.setDataCriacao(LocalDate.now());
         }
 
         u.setAtivo(true);
 
-        usuarios.add(u);
-
+        UsuarioDao dao = new UsuarioDao();
+        dao.inserir(u);
         System.out.println("Usuário cadastrado: " + u.getNome());
     }
 
@@ -89,6 +88,7 @@ public class UsuarioController {
                 u.getIdUsuario() + " - " +
                 u.getNome() + " - " +
                 u.getEmail() + " - " +
+                u.getTipoUsuario() + " - " +
                 u.getCidadeUF()
             );
         }
@@ -137,4 +137,10 @@ public class UsuarioController {
             System.out.println("Usuário não encontrado.");
         }
     }
+
+    // LOGIN TREINADOR
+    public  UsuarioModel login(String email, String senha) {
+        return UsuarioDao.login(email, senha);
+    }
 }
+
